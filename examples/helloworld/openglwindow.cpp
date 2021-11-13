@@ -9,107 +9,22 @@
 
 #include "abcg.hpp"
 
-void OpenGLWindow::handleEvent(SDL_Event &event) {
-  // Keyboard events
-  if (event.type == SDL_KEYDOWN) {
-    if (event.key.keysym.sym == SDLK_UP)
-      m_gameData.m_input.set(static_cast<size_t>(Input::RUp));
-    if (event.key.keysym.sym == SDLK_DOWN)
-      m_gameData.m_input.set(static_cast<size_t>(Input::RDown));
-    if (event.key.keysym.sym == SDLK_w)
-      m_gameData.m_input.set(static_cast<size_t>(Input::LUp));
-    if (event.key.keysym.sym == SDLK_s)
-      m_gameData.m_input.set(static_cast<size_t>(Input::LDown));
-  }
-  if (event.type == SDL_KEYUP) {
-    if (event.key.keysym.sym == SDLK_UP)
-      m_gameData.m_input.reset(static_cast<size_t>(Input::RUp));
-    if (event.key.keysym.sym == SDLK_DOWN)
-      m_gameData.m_input.reset(static_cast<size_t>(Input::RDown));
-    if (event.key.keysym.sym == SDLK_w)
-      m_gameData.m_input.reset(static_cast<size_t>(Input::LUp));
-    if (event.key.keysym.sym == SDLK_s)
-      m_gameData.m_input.reset(static_cast<size_t>(Input::LDown));
-  }
-}
-
-void updateBallSpeed(float* ball_xSpeed, float* ball_ySpeed){
-  
-  std::default_random_engine m_randomEngine;
-  m_randomEngine.seed(std::chrono::steady_clock::now().time_since_epoch().count());
-
-  std::uniform_real_distribution<float> m_randomDist{-0.5f, 0.5f};
-
-  float xSpeed_aux= m_randomDist(m_randomEngine);
-
-  *ball_ySpeed = m_randomDist(m_randomEngine);
-
-  if(xSpeed_aux > 0.0f){
-
-    *ball_xSpeed = 0.5f;
-
-  }
-  else{
-
-    *ball_xSpeed = -0.5f;
-
-  }
-
-}
-
 void OpenGLWindow::initializeGL() {
-
-  m_randomEngine.seed(std::chrono::steady_clock::now().time_since_epoch().count());
-
-  std::uniform_real_distribution<float> m_randomDist{-0.5f, 0.5f};
-
-  updateBallSpeed(&ball_xSpeed, &ball_ySpeed);        // Define randomicamente a velocidade da bolinha em X e Y;
-
-  pad_leftSpeed = 0.0f;                // Define a velocidade aleatória inicial da pad esquerda
-  pad_rightSpeed = 0.0f;               // Define a velocidade aleatória inicial da pad direita
-
   // Enable Z-buffer test
   glEnable(GL_DEPTH_TEST);
 
-  // Create shader program    mudar o shader para usar o dshader do asteroids!
-  m_program = createProgramFromFile(getAssetsPath() + "objects.vert",getAssetsPath() + "objects.frag");
-
-
-  glm::vec4 m_color{1};
-
-
-  // Start using the shader program
-  glUseProgram(m_program);
-  // Start using the VAO
-  glBindVertexArray(m_vao);
-  
-  // Pega os endereços das variáveis uniformes do shader
-  m_rotationLoc = abcg::glGetUniformLocation(m_program, "rotation");
-  m_scaleLoc = abcg::glGetUniformLocation(m_program, "scale");
-  m_colorLoc = abcg::glGetUniformLocation(m_program, "color");
-  m_translationLoc = abcg::glGetUniformLocation(m_program, "translation");
-
-  // seta a translacao inicial em 0x0
-  glUniform2f(m_translationLoc, 0, 0);
-
-  // seta a cor do shader
-  glUniform4f(m_colorLoc, 1, 1, 1, 0.5f);
-
-  // seta a escala do objeto no shader
-  glUniform1f(m_scaleLoc, 1);
-
-  glUniform1f(m_rotationLoc, 0.0f);
+  // Create shader program
+  m_program = createProgramFromFile(getAssetsPath() + "UnlitVertexColor.vert",
+                                    getAssetsPath() + "UnlitVertexColor.frag");
 
   // clang-format off
-  std::array vertices{glm::vec2(1.0f, 1.0f), glm::vec2(-1.0f, 1.0f),glm::vec2(1.0f, 0.95f), glm::vec2(-1.0f, 0.95f),              // parede de cima
-                      glm::vec2(1.0f, -1.0f), glm::vec2(-1.0f, -1.0f),glm::vec2(1.0f, -0.95f), glm::vec2(-1.0f, -0.95f),           // parede de baixo
-                      glm::vec2(-1.0f, (-0.2f + pad_leftCenter)), glm::vec2(-1.0f, (0.2f + pad_leftCenter)),glm::vec2(-0.975f, (-0.2f + pad_leftCenter)), glm::vec2(-0.975f, (0.2f + pad_leftCenter)),              // raquete esquerda
-                      glm::vec2(1.0f, (-0.2f + pad_rightCenter)), glm::vec2(1.0f, (0.2f + pad_rightCenter)),glm::vec2(0.975f, (-0.2f + pad_rightCenter)), glm::vec2(0.975f, (0.2f + pad_rightCenter)),
-                      glm::vec2((-0.025f + ball_xCenter), (ratio*(-0.025f + ball_yCenter))), glm::vec2((-0.025f + ball_xCenter), (ratio*(0.025f + ball_yCenter))),glm::vec2((0.025f + ball_xCenter), (ratio*(-0.025f + ball_yCenter))), glm::vec2((0.025f + ball_xCenter), (ratio*(0.025f + ball_yCenter)))};         // raquete direita
-
-  
-  auto seed{std::chrono::steady_clock::now().time_since_epoch().count()};
-  m_randomEngine.seed(seed);
+  std::array vertices{glm::vec2(0.0f, 0.5f), 
+                      glm::vec2(0.5f, -0.5f),
+                      glm::vec2(-0.5f, -0.5f)};
+  std::array colors{glm::vec3(1.0f, 0.0f, 0.0f), 
+                    glm::vec3(1.0f, 0.0f, 1.0f),
+                    glm::vec3(0.0f, 1.0f, 0.0f)};
+  // clang-format on
 
   // Generate a new VBO and get the associated ID
   glGenBuffers(1, &m_vboVertices);
@@ -123,7 +38,7 @@ void OpenGLWindow::initializeGL() {
 
   glGenBuffers(1, &m_vboColors);
   glBindBuffer(GL_ARRAY_BUFFER, m_vboColors);
-  //glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors.data(), GL_STATIC_DRAW);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors.data(), GL_STATIC_DRAW);
   glBindBuffer(GL_ARRAY_BUFFER, 0);
 
   // Get location of attributes in the program
@@ -148,137 +63,9 @@ void OpenGLWindow::initializeGL() {
 
   // End of binding to current VAO
   glBindVertexArray(0);
-
-  glUseProgram(0);
-}
-
-void OpenGLWindow::paintUI() {
-  abcg::OpenGLWindow::paintUI();
-
-  {
-    const auto size{ImVec2(300, 85)};
-    const auto textPosition{ImVec2((m_viewportWidth - size.x) / 2.0f,
-                               (m_viewportHeight - size.y) / 2.0f)};
-    ImGui::SetNextWindowPos(textPosition); // Posiciona no centro da tela
-    ImGui::SetNextWindowSize(size);   // Uma tela de tamanho 300,85
-    ImGuiWindowFlags flags{ImGuiWindowFlags_NoBackground |
-                           ImGuiWindowFlags_NoTitleBar |
-                           ImGuiWindowFlags_NoInputs}; // Que não tem fundo, nem título, nem é clicável
-    ImGui::Begin(" ", nullptr, flags);
-    // ImGui::PushFont(m_font);
-
-    // Em alguns estados escreve alguma coisa
-    // if (m_gameData.m_state == State::LeftWin) {
-      // ImGui::Text("LEFT WINS");
-    // } else if (m_gameData.m_state == State::RightWin) {
-      // ImGui::Text("RIGHT WINS");
-    // } else{
-      // ImGui::Text(" ");
-    // }
-
-    // ImGui::PopFont();
-    ImGui::End();
-  }
-}
-
-
-void updatePosBolinha(float* ball_xCenter, float* ball_yCenter, float* ball_xSpeed, float* ball_ySpeed, float* pad_leftCenter, float* pad_rightCenter, float* deltaTime, GameData* m_gameData){
-
-  float ball_xCenter_aux = *ball_xCenter + ((*ball_xSpeed) * (*deltaTime));
-  float ball_yCenter_aux = *ball_yCenter + ((*ball_ySpeed) * (*deltaTime));
-
-
-  if(*ball_xCenter > 2.0f || *ball_xCenter < -2.0f){    // Reseta a bolinha após percorrer uma longa distancia em X
-
-    // if(*ball_xCenter < -2.0f){
-      // m_gameData->m_state = State::RightWin;
-    // } else {
-      // m_gameData->m_state = State::LeftWin;
-    // }
-
-    *ball_xCenter = 0.0f;
-    *ball_yCenter = 0.0f;
-    
-    updateBallSpeed(ball_xSpeed, ball_ySpeed);     // Define randomicamente uma nova velocidade para a bolinha em X e Y
-
-  }
-
-  if(ball_yCenter_aux >=0.91 || ball_yCenter_aux <= -0.91){    // Colisao com as paredes!
-
-    *ball_ySpeed = (-1) * (*ball_ySpeed);                // Inverte o sentido da velocidade em Y
-
-  }
-
-  if(ball_xCenter_aux < -0.965f && ball_xCenter_aux > -1.1f){                          // Colisao com a pad da esquerda
-
-    if(ball_yCenter_aux >= *pad_leftCenter - 0.25f && ball_yCenter_aux <= *pad_leftCenter + 0.25f){
-
-      *ball_xSpeed = (-1) * (*ball_xSpeed) * 1.1f;     // incrementa a velocidade em X em 10% toda vez que um pad bate na bolinha!
-      
-      *ball_ySpeed = *ball_ySpeed + ((*ball_yCenter - *pad_leftCenter) * 2.0f);    // Altera a velocidade em Y conforme a posicao de colisao em Y no Pad
-
-    }
-
-  }
-  else if(ball_xCenter_aux > 0.965f && ball_xCenter_aux < 1.1f){                       // Colisao com a pad da direita
-
-    if(ball_yCenter_aux >= *pad_rightCenter - 0.25f && ball_yCenter_aux <= *pad_rightCenter + 0.25f){
-
-      *ball_xSpeed = (-1) * (*ball_xSpeed) * 1.1f;     // incrementa a velocidade em X em 10% toda vez que um pad bate na bolinha!
-
-      *ball_ySpeed = *ball_ySpeed + ((*ball_yCenter - *pad_rightCenter) * 2.0f);   // Altera a velocidade em Y conforme a posicao de colisao em Y no Pad
-
-    }
-
-  }
-
-  *ball_xCenter = *ball_xCenter + ((*ball_xSpeed) * (*deltaTime));
-  *ball_yCenter = *ball_yCenter + ((*ball_ySpeed) * (*deltaTime));
-
-}
-
-void updatePosPad(float* pad_center, float* pad_velocity, float* deltaTime){
-
-  if((*pad_center > -0.800f && *pad_center < 0.800f) || (*pad_center <= -0.800f && *pad_velocity > 0) || (*pad_center >= 0.800f && *pad_velocity < 0)){
-
-    *pad_center = *pad_center + ((*pad_velocity) * (*deltaTime));
-
-  }
-
-}
-
-
-void updatePadSpeed(GameData m_gameData, float* pad_leftSpeed, float* pad_rightSpeed){
-  
-  *pad_leftSpeed=0.0f;
-  *pad_rightSpeed=0.0f;
-
-  if(m_gameData.m_input[static_cast<size_t>(Input::LUp)]){
-    *pad_leftSpeed=1.0f;
-  }
-  if(m_gameData.m_input[static_cast<size_t>(Input::LDown)]){
-    *pad_leftSpeed=-1.0f;
-  }
-  if(m_gameData.m_input[static_cast<size_t>(Input::RUp)]){
-    *pad_rightSpeed=1.0f;
-  }
-  if(m_gameData.m_input[static_cast<size_t>(Input::RDown)]){
-    *pad_rightSpeed=-1.0f;
-  }
-
 }
 
 void OpenGLWindow::paintGL() {
-
-  float deltaTime{static_cast<float>(getDeltaTime())};
-
-  updatePosBolinha(&ball_xCenter, &ball_yCenter, &ball_xSpeed, &ball_ySpeed, &pad_leftCenter, &pad_rightCenter, &deltaTime, &m_gameData);
-
-  updatePadSpeed(m_gameData, &pad_leftSpeed, &pad_rightSpeed);
-
-  updatePosPad(&pad_leftCenter, &pad_leftSpeed, &deltaTime);
-  updatePosPad(&pad_rightCenter, &pad_rightSpeed, &deltaTime);
-
   // Set the clear color
   glClearColor(gsl::at(m_clearColor, 0), gsl::at(m_clearColor, 1),
                gsl::at(m_clearColor, 2), gsl::at(m_clearColor, 3));
@@ -293,22 +80,8 @@ void OpenGLWindow::paintGL() {
   // Start using the VAO
   glBindVertexArray(m_vao);
 
-
-  // Render the game
-  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);    // desenha parede de cima
-  glDrawArrays(GL_TRIANGLE_STRIP, 4, 4);    // desenha parede de baixo
-
-  glUniform2f(m_translationLoc, 0, pad_leftCenter);
-  glDrawArrays(GL_TRIANGLE_STRIP, 8, 4);    // desenha raquete esquerda
-
-  glUniform2f(m_translationLoc, 0, pad_rightCenter);
-  glDrawArrays(GL_TRIANGLE_STRIP, 12, 4);   // desenha raquete direita
-
-  glUniform2f(m_translationLoc, ball_xCenter, ball_yCenter);
-
-  glDrawArrays(GL_TRIANGLE_STRIP, 16, 4);   // desenha bolinha
-
-  glUniform2f(m_translationLoc, 0, 0.0f);
+  // Render a nice colored triangle
+  glDrawArrays(GL_TRIANGLES, 0, 3);
 
   // End using the VAO
   glBindVertexArray(0);
@@ -316,6 +89,81 @@ void OpenGLWindow::paintGL() {
   glUseProgram(0);
 }
 
+void OpenGLWindow::paintUI() {
+  // Parent class will show fullscreen button and FPS meter
+  abcg::OpenGLWindow::paintUI();
+
+  // Our own ImGui widgets go below
+  {
+    // If this is the first frame, set initial position of our window
+    static bool firstTime{true};
+    if (firstTime) {
+      ImGui::SetNextWindowPos(ImVec2(5, 75));
+      firstTime = false;
+    }
+
+    // Window begin
+    ImGui::Begin("Hello! This is a Dear ImGui window");
+
+    // Static text
+    ImGui::Text("Some example widgets are given below.");
+
+    // Combo box
+    {
+      static std::size_t currentIndex{};
+      std::vector<std::string> comboItems{"First item", "Second item",
+                                          "Third item", "Fourth item"};
+
+      if (ImGui::BeginCombo("A combo box",
+                            comboItems.at(currentIndex).c_str())) {
+        for (auto index : iter::range(comboItems.size())) {
+          const bool isSelected{currentIndex == index};
+          if (ImGui::Selectable(comboItems.at(index).c_str(), isSelected))
+            currentIndex = index;
+
+          // Set the initial focus when opening the combo (scrolling + keyboard
+          // navigation focus)
+          if (isSelected) ImGui::SetItemDefaultFocus();
+        }
+        ImGui::EndCombo();
+      }
+    }
+
+    // Edit bools storing our window open/close state
+    ImGui::Checkbox("Show demo window", &m_showDemoWindow);
+    ImGui::Checkbox("Show another window", &m_showAnotherWindow);
+
+    // Slider from 0.0f to 1.0f
+    static float f{};
+    ImGui::SliderFloat("A slider", &f, 0.0f, 1.0f);
+
+    // Edit background color
+    ImGui::ColorEdit3("Background", m_clearColor.data());
+
+    ImGui::Text("Application average %.3f ms/frame (%.1f FPS)",
+                1000.0 / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
+    // End of window
+    ImGui::End();
+
+    // Show the big demo window (Most of the sample code is in
+    // ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear
+    // ImGui!).
+    if (m_showDemoWindow) {
+      ImGui::ShowDemoWindow(&m_showDemoWindow);
+    }
+
+    // Show another simple window
+    if (m_showAnotherWindow) {
+      // Pass a pointer to our bool variable (the window will have a closing
+      // button that will clear the bool when clicked)
+      ImGui::Begin("Another window", &m_showAnotherWindow);
+      ImGui::Text("Hello from another window!");
+      if (ImGui::Button("Close Me")) m_showAnotherWindow = false;
+      ImGui::End();
+    }
+  }
+}
 
 void OpenGLWindow::resizeGL(int width, int height) {
   m_viewportWidth = width;

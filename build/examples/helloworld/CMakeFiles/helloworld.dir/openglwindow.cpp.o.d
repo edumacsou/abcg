@@ -497,16 +497,6 @@ examples/helloworld/CMakeFiles/helloworld.dir/openglwindow.cpp.o: \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/glm/gtx/quaternion.inl \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/imgui/imgui.h \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/imgui/imconfig.h \
- /home/maciel/Documentos/Comp_grafica/abcg/examples/helloworld/gamedata.hpp \
- /usr/include/c++/10/bitset /usr/include/c++/10/random \
- /usr/include/c++/10/bits/random.h /usr/include/c++/10/vector \
- /usr/include/c++/10/bits/stl_vector.h \
- /usr/include/c++/10/bits/stl_bvector.h \
- /usr/include/c++/10/bits/vector.tcc \
- /usr/include/x86_64-linux-gnu/c++/10/bits/opt_random.h \
- /usr/include/c++/10/bits/random.tcc /usr/include/c++/10/numeric \
- /usr/include/c++/10/bits/stl_numeric.h \
- /usr/include/c++/10/pstl/glue_numeric_defs.h \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/cppitertools/itertools.hpp \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/cppitertools/accumulate.hpp \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/cppitertools/internal/iterator_wrapper.hpp \
@@ -515,7 +505,10 @@ examples/helloworld/CMakeFiles/helloworld.dir/openglwindow.cpp.o: \
  /usr/include/c++/10/bits/hashtable_policy.h \
  /usr/include/c++/10/bits/node_handle.h \
  /usr/include/c++/10/bits/unordered_map.h \
- /usr/include/c++/10/bits/erase_if.h /usr/include/c++/10/variant \
+ /usr/include/c++/10/bits/erase_if.h /usr/include/c++/10/vector \
+ /usr/include/c++/10/bits/stl_vector.h \
+ /usr/include/c++/10/bits/stl_bvector.h \
+ /usr/include/c++/10/bits/vector.tcc /usr/include/c++/10/variant \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/cppitertools/internal/iterbase.hpp \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/cppitertools/internal/iterbase.hpp \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/cppitertools/batched.hpp \
@@ -562,6 +555,8 @@ examples/helloworld/CMakeFiles/helloworld.dir/openglwindow.cpp.o: \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/gsl/gsl_byte \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/gsl/gsl_util \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/gsl/multi_span \
+ /usr/include/c++/10/numeric /usr/include/c++/10/bits/stl_numeric.h \
+ /usr/include/c++/10/pstl/glue_numeric_defs.h \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/gsl/pointers \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/gsl/string_span \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/gsl/span_ext \

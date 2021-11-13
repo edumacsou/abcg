@@ -45,6 +45,16 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/maciel/Documentos/Comp_grafica/abcg/build/examples/helloworld/cmake_install.cmake")
+  include("/home/maciel/Documentos/Comp_grafica/abcg/build/examples/firstapp/cmake_install.cmake")
+  include("/home/maciel/Documentos/Comp_grafica/abcg/build/examples/sierpinski/cmake_install.cmake")
+  include("/home/maciel/Documentos/Comp_grafica/abcg/build/examples/tictactoe/cmake_install.cmake")
+  include("/home/maciel/Documentos/Comp_grafica/abcg/build/examples/coloredtriangles/cmake_install.cmake")
+  include("/home/maciel/Documentos/Comp_grafica/abcg/build/examples/projeto/cmake_install.cmake")
+  include("/home/maciel/Documentos/Comp_grafica/abcg/build/examples/regularpolygons/cmake_install.cmake")
+  include("/home/maciel/Documentos/Comp_grafica/abcg/build/examples/pong/cmake_install.cmake")
+  include("/home/maciel/Documentos/Comp_grafica/abcg/build/examples/asteroids3/cmake_install.cmake")
+  include("/home/maciel/Documentos/Comp_grafica/abcg/build/examples/loadmodel/cmake_install.cmake")
+  include("/home/maciel/Documentos/Comp_grafica/abcg/build/examples/lookat/cmake_install.cmake")
 
 endif()
 

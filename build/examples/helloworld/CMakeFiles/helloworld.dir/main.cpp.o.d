@@ -496,16 +496,4 @@ examples/helloworld/CMakeFiles/helloworld.dir/main.cpp.o: \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/glm/gtx/component_wise.inl \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/glm/gtx/norm.inl \
  /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/glm/gtx/quaternion.inl \
- /home/maciel/Documentos/Comp_grafica/abcg/examples/helloworld/openglwindow.hpp \
- /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/imgui/imgui.h \
- /home/maciel/Documentos/Comp_grafica/abcg/abcg/external/imgui/imconfig.h \
- /home/maciel/Documentos/Comp_grafica/abcg/examples/helloworld/gamedata.hpp \
- /usr/include/c++/10/bitset /usr/include/c++/10/random \
- /usr/include/c++/10/bits/random.h /usr/include/c++/10/vector \
- /usr/include/c++/10/bits/stl_vector.h \
- /usr/include/c++/10/bits/stl_bvector.h \
- /usr/include/c++/10/bits/vector.tcc \
- /usr/include/x86_64-linux-gnu/c++/10/bits/opt_random.h \
- /usr/include/c++/10/bits/random.tcc /usr/include/c++/10/numeric \
- /usr/include/c++/10/bits/stl_numeric.h \
- /usr/include/c++/10/pstl/glue_numeric_defs.h
+ /home/maciel/Documentos/Comp_grafica/abcg/examples/helloworld/openglwindow.hpp

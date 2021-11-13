@@ -168,6 +168,136 @@ helloworld/fast:
 	$(MAKE) $(MAKESILENT) -f examples/helloworld/CMakeFiles/helloworld.dir/build.make examples/helloworld/CMakeFiles/helloworld.dir/build
 .PHONY : helloworld/fast
 
+#=============================================================================
+# Target rules for targets named firstapp
+
+# Build rule for target.
+firstapp: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 firstapp
+.PHONY : firstapp
+
+# fast build rule for target.
+firstapp/fast:
+	$(MAKE) $(MAKESILENT) -f examples/firstapp/CMakeFiles/firstapp.dir/build.make examples/firstapp/CMakeFiles/firstapp.dir/build
+.PHONY : firstapp/fast
+
+#=============================================================================
+# Target rules for targets named sierpinski
+
+# Build rule for target.
+sierpinski: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sierpinski
+.PHONY : sierpinski
+
+# fast build rule for target.
+sierpinski/fast:
+	$(MAKE) $(MAKESILENT) -f examples/sierpinski/CMakeFiles/sierpinski.dir/build.make examples/sierpinski/CMakeFiles/sierpinski.dir/build
+.PHONY : sierpinski/fast
+
+#=============================================================================
+# Target rules for targets named tictactoe
+
+# Build rule for target.
+tictactoe: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tictactoe
+.PHONY : tictactoe
+
+# fast build rule for target.
+tictactoe/fast:
+	$(MAKE) $(MAKESILENT) -f examples/tictactoe/CMakeFiles/tictactoe.dir/build.make examples/tictactoe/CMakeFiles/tictactoe.dir/build
+.PHONY : tictactoe/fast
+
+#=============================================================================
+# Target rules for targets named coloredtriangles
+
+# Build rule for target.
+coloredtriangles: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 coloredtriangles
+.PHONY : coloredtriangles
+
+# fast build rule for target.
+coloredtriangles/fast:
+	$(MAKE) $(MAKESILENT) -f examples/coloredtriangles/CMakeFiles/coloredtriangles.dir/build.make examples/coloredtriangles/CMakeFiles/coloredtriangles.dir/build
+.PHONY : coloredtriangles/fast
+
+#=============================================================================
+# Target rules for targets named projeto
+
+# Build rule for target.
+projeto: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 projeto
+.PHONY : projeto
+
+# fast build rule for target.
+projeto/fast:
+	$(MAKE) $(MAKESILENT) -f examples/projeto/CMakeFiles/projeto.dir/build.make examples/projeto/CMakeFiles/projeto.dir/build
+.PHONY : projeto/fast
+
+#=============================================================================
+# Target rules for targets named regularpolygons
+
+# Build rule for target.
+regularpolygons: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 regularpolygons
+.PHONY : regularpolygons
+
+# fast build rule for target.
+regularpolygons/fast:
+	$(MAKE) $(MAKESILENT) -f examples/regularpolygons/CMakeFiles/regularpolygons.dir/build.make examples/regularpolygons/CMakeFiles/regularpolygons.dir/build
+.PHONY : regularpolygons/fast
+
+#=============================================================================
+# Target rules for targets named pong
+
+# Build rule for target.
+pong: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pong
+.PHONY : pong
+
+# fast build rule for target.
+pong/fast:
+	$(MAKE) $(MAKESILENT) -f examples/pong/CMakeFiles/pong.dir/build.make examples/pong/CMakeFiles/pong.dir/build
+.PHONY : pong/fast
+
+#=============================================================================
+# Target rules for targets named asteroids3
+
+# Build rule for target.
+asteroids3: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 asteroids3
+.PHONY : asteroids3
+
+# fast build rule for target.
+asteroids3/fast:
+	$(MAKE) $(MAKESILENT) -f examples/asteroids3/CMakeFiles/asteroids3.dir/build.make examples/asteroids3/CMakeFiles/asteroids3.dir/build
+.PHONY : asteroids3/fast
+
+#=============================================================================
+# Target rules for targets named loadmodel
+
+# Build rule for target.
+loadmodel: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 loadmodel
+.PHONY : loadmodel
+
+# fast build rule for target.
+loadmodel/fast:
+	$(MAKE) $(MAKESILENT) -f examples/loadmodel/CMakeFiles/loadmodel.dir/build.make examples/loadmodel/CMakeFiles/loadmodel.dir/build
+.PHONY : loadmodel/fast
+
+#=============================================================================
+# Target rules for targets named lookat
+
+# Build rule for target.
+lookat: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lookat
+.PHONY : lookat
+
+# fast build rule for target.
+lookat/fast:
+	$(MAKE) $(MAKESILENT) -f examples/lookat/CMakeFiles/lookat.dir/build.make examples/lookat/CMakeFiles/lookat.dir/build
+.PHONY : lookat/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -177,9 +307,19 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... abcg"
+	@echo "... asteroids3"
+	@echo "... coloredtriangles"
+	@echo "... firstapp"
 	@echo "... fmt"
 	@echo "... helloworld"
 	@echo "... imgui"
+	@echo "... loadmodel"
+	@echo "... lookat"
+	@echo "... pong"
+	@echo "... projeto"
+	@echo "... regularpolygons"
+	@echo "... sierpinski"
+	@echo "... tictactoe"
 .PHONY : help
 
 

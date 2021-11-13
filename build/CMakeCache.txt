@@ -311,6 +311,33 @@ abcg_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libSDL2main.a;general;
 abcg_SOURCE_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/abcg
 
 //Value Computed by CMake
+asteroids3_BINARY_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/build/examples/asteroids3
+
+//Value Computed by CMake
+asteroids3_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+asteroids3_SOURCE_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/examples/asteroids3
+
+//Value Computed by CMake
+asteroids_BINARY_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/build/examples/asteroids
+
+//Value Computed by CMake
+asteroids_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+asteroids_SOURCE_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/examples/asteroids
+
+//Value Computed by CMake
+coloredtriangles_BINARY_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/build/examples/coloredtriangles
+
+//Value Computed by CMake
+coloredtriangles_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+coloredtriangles_SOURCE_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/examples/coloredtriangles
+
+//Value Computed by CMake
 cppitertools_BINARY_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/build/abcg/external/cppitertools
 
 //Value Computed by CMake
@@ -327,6 +354,15 @@ external_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 external_SOURCE_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/abcg/external
+
+//Value Computed by CMake
+firstapp_BINARY_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/build/examples/firstapp
+
+//Value Computed by CMake
+firstapp_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+firstapp_SOURCE_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/examples/firstapp
 
 //Value Computed by CMake
 fmt_BINARY_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/build/abcg/external/fmt
@@ -367,6 +403,78 @@ imgui_LIB_DEPENDS:STATIC=general;dl;
 //Value Computed by CMake
 imgui_SOURCE_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/abcg/external/imgui
 
+//Value Computed by CMake
+loadmodel_BINARY_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/build/examples/loadmodel
+
+//Value Computed by CMake
+loadmodel_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+loadmodel_SOURCE_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/examples/loadmodel
+
+//Value Computed by CMake
+lookat_BINARY_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/build/examples/lookat
+
+//Value Computed by CMake
+lookat_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+lookat_SOURCE_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/examples/lookat
+
+//Value Computed by CMake
+pong_BINARY_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/build/examples/pong
+
+//Value Computed by CMake
+pong_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+pong_SOURCE_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/examples/pong
+
+//Value Computed by CMake
+projeto_BINARY_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/build/examples/projeto
+
+//Value Computed by CMake
+projeto_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+projeto_SOURCE_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/examples/projeto
+
+//Value Computed by CMake
+regularpolygons_BINARY_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/build/examples/regularpolygons
+
+//Value Computed by CMake
+regularpolygons_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+regularpolygons_SOURCE_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/examples/regularpolygons
+
+//Value Computed by CMake
+sierpinski_BINARY_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/build/examples/sierpinski
+
+//Value Computed by CMake
+sierpinski_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+sierpinski_SOURCE_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/examples/sierpinski
+
+//Value Computed by CMake
+tictactoe_BINARY_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/build/examples/tictactoe
+
+//Value Computed by CMake
+tictactoe_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+tictactoe_SOURCE_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/examples/tictactoe
+
+//Value Computed by CMake
+tictactoe_meu_BINARY_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/build/examples/tictactoe_meu
+
+//Value Computed by CMake
+tictactoe_meu_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+tictactoe_meu_SOURCE_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/examples/tictactoe_meu
+
 
 ########################
 # INTERNAL cache entries
@@ -376,8 +484,6 @@ imgui_SOURCE_DIR:STATIC=/home/maciel/Documentos/Comp_grafica/abcg/abcg/external/
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
 CMAKE_AR-ADVANCED:INTERNAL=1
-//STRINGS property for variable: CMAKE_BUILD_TYPE
-CMAKE_BUILD_TYPE-STRINGS:INTERNAL=Debug;Release;MinSizeRel;RelWithDebInfo
 //This is the directory where this CMakeCache.txt was created
 CMAKE_CACHEFILE_DIR:INTERNAL=/home/maciel/Documentos/Comp_grafica/abcg/build
 //Major version of cmake used to create the current loaded cache
@@ -385,7 +491,7 @@ CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
 CMAKE_CACHE_MINOR_VERSION:INTERNAL=21
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=3
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=4
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -440,8 +546,6 @@ CMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_EXPORT_COMPILE_COMMANDS
-CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
@@ -482,7 +586,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=10
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=20
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -565,5 +669,5 @@ OPENGL_xmesa_INCLUDE_DIR-ADVANCED:INTERNAL=1
 SDL2_IMAGE_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: SDL2_IMAGE_LIBRARY
 SDL2_IMAGE_LIBRARY-ADVANCED:INTERNAL=1
-SDL2_LIBRARY_TEMP:INTERNAL=/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2.so;-lpthread;-lpthread;-lpthread;-lpthread
+SDL2_LIBRARY_TEMP:INTERNAL=/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2.so;-lpthread;-lpthread;-lpthread;-lpthread;-lpthread;-lpthread;-lpthread;-lpthread;-lpthread;-lpthread;-lpthread;-lpthread
 
