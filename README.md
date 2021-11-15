@@ -2,23 +2,21 @@ Nome: Henrique Fantato                                                          
 Nome: Eduardo Maciel de Souza                                                                                            RA: 11055516
 Professor: Harlen Batagelo                                                                                       Turma: A2-Noturno SA
        
-Entrega – Aplicativo 2D Interativo - Pong
+Repositório para Entregas - Computação Gráfica
 
-•	Links:
-  o	Repositório GitHub: https://github.com/edumacsou/abcg/tree/main
-  o	Repositório WebAssembly: https://github.com/edumacsou/abcg/tree/main/public
-  o	Página WebAssembly: https://edumacsou.github.io/abcg/
-  Observação: Criamos a página em WebAssembly utilizando o tutorial informado no site da disciplina, porém é gerado um erro no arquivo javascript e a página não funciona           corretamente. O nome dos arquivos contidos na página são derivações de hello world, pois o próprio script cria com essa nomenclatura, caso contrário ele falha.
+ Bem vindo ao repositório de entregas da disciplina Computação Gráfica! Aqui se encontram todas as entregas, até a data atual, 
+referente as avaliações da disciplina, ministrada pelo professor Harlen Batagelo, na Universidade Federal do ABC. Todos os 
+projetos aqui contidos são desenvolvimentos de aplicações de computação gráfica em C++, utilizando OpenGL, com base em uma 
+biblioteca disponibilizada pelo próprio professor, com o intuito de aplicar conceitos de computação gráfica 2D e 3D adquiridos
+durante o percorrer da disciplina. Todos os códigos extras além da biblioteca foram desenvolvidos pelos alunos citados acima.
 
+*Todos os códigos se encontram nas pastas "example" e "builds", e cada entrega possui uma branch própria!*
 
-•	Descrição:
-
-  Implementamos o jogo clássico Pong, utilizando a biblioteca ABCg e C++. Foram criadas as geometrias dos objetos desenhados em tela e, 
- com base na variável de translação do shader utilizado, realizamos toda a movimentação do jogo. 
-  Foram criadas funções para atualização de posição das raquetes dos jogadores, bem como uma função para controlar a velocidade delas com base num EventHandler, 
- onde as raquetes podem ser controladas com as teclas W e S(raquete esquerda), e as setas Up e Down(raquete direita). Também foi implementado uma função que 
- controla a bolinha, realizando atualização de sua posição em tela, bem como atualização de sua velocidade e uma decetção de colisão com os objetos em cena. 
-
+Entregas até a data atual:
+       
+ Pong 2D - Adaptação do clássico jogo Pong para C++, desenvolvido pelos alunos. Branch: "Entrega - 1"
+ 
+ Jumping Block - Animação da interação entre dois blocos, na qual um deles pula. Branch: "Entrega - 2"
 
 
 
