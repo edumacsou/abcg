@@ -1,5 +1,6 @@
 Nome: Henrique Fantato                                                        --                                           RA: 21053916         
 Nome: Eduardo Maciel de Souza                                                 --                                           RA: 11055516
+
 Professor: Harlen Batagelo                                                    --                                   Turma: A2-Noturno SA
        
 ### Repositório para Entregas - Computação Gráfica
