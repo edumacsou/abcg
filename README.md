@@ -20,6 +20,9 @@ durante o percorrer da disciplina. Todos os códigos extras além da biblioteca 
  
  - Jumping Block - Animação da interação entre dois blocos, na qual um deles pula. Branch: "Entrega - 2"
 
+ - Jumping Block V2 - Animação da interação entre dois blocos, na qual um deles pula, com texturização e iluminação. Branch: "Entrega - 3"
+
+
 
 
 
