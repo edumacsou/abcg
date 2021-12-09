@@ -5,7 +5,7 @@ Nome: Eduardo Maciel de Souza                                              --   
 Professor: Harlen Batagelo                                                 --                                      Turma: A2-Noturno SA
 
        
-# Entrega 3 – Aplicativo 3D com Textura e Iluminação - Jumping Block V2
+# Entrega X – Aplicativo 3D com Textura e Iluminação - Jumping Block V2
 
 ***Links:***
 
@@ -15,6 +15,11 @@ Professor: Harlen Batagelo                                                 --   
   
    •	Página WebAssembly: https://edumacsou.github.io/abcg/public/lookat.html
   
+***Observação***
+  Nesta branch, tentamos implementar o modelo de reflexão de Phong em conjunto do modelo de sombreamento de Gouraud, utilizando a camera ao invés do trackball da aula.
+  Infelizmente a implementação não foi bem suscedida, pois a direção do raio de luz não ficou como o desejado, deixando o jogo extremamente escuro e sem luz.
+  Dado a função de jogo de nossa aplicação, decidimos entregar a versão sem Iluminação, pois esta versão está injogável, dado a falta de luz na cena.
+
 
 
 ***Descrição:***
