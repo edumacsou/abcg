@@ -3,6 +3,7 @@
 #include <fmt/core.h>
 #include <imgui.h>
 #include <tiny_obj_loader.h>
+#include <glm/gtc/matrix_inverse.hpp>
 
 #include <cppitertools/itertools.hpp>
 #include <glm/gtx/fast_trigonometry.hpp>
@@ -70,8 +71,7 @@ void OpenGLWindow::initializeGL() {
   }
 
   // Create program
-  m_program = createProgramFromFile(getAssetsPath() + "lookat.vert",
-                                    getAssetsPath() + "lookat.frag");
+  m_program = createProgramFromFile(getAssetsPath() + "gouraud.vert", getAssetsPath() + "gouraud.frag");   // getAssetsPath() + "lookat.vert", getAssetsPath() + "lookat.frag"
 
   m_ground.initializeGL(m_program);
 
@@ -114,6 +114,7 @@ void OpenGLWindow::initializeGL() {
 
   resizeGL(getWindowSettings().width, getWindowSettings().height);
 }
+
 
 void OpenGLWindow::loadModelFromFile(std::string_view path) {
   tinyobj::ObjReader reader;
@@ -200,22 +201,52 @@ void OpenGLWindow::paintGL() {
   abcg::glUseProgram(m_program);
 
   // Get location of uniform variables (could be precomputed)
-  const GLint viewMatrixLoc{
-      abcg::glGetUniformLocation(m_program, "viewMatrix")};
-  const GLint projMatrixLoc{
-      abcg::glGetUniformLocation(m_program, "projMatrix")};
+  // Get location of uniform variables
+  const GLint viewMatrixLoc{abcg::glGetUniformLocation(m_program, "viewMatrix")};
+  const GLint projMatrixLoc{abcg::glGetUniformLocation(m_program, "projMatrix")};
   const GLint modelMatrixLoc{
       abcg::glGetUniformLocation(m_program, "modelMatrix")};
-  const GLint colorLoc{abcg::glGetUniformLocation(m_program, "color")};
+  const GLint normalMatrixLoc{
+      abcg::glGetUniformLocation(m_program, "normalMatrix")};
+  const GLint lightDirLoc{
+      abcg::glGetUniformLocation(m_program, "lightDirWorldSpace")};
+  const GLint shininessLoc{abcg::glGetUniformLocation(m_program, "shininess")};
+  const GLint IaLoc{abcg::glGetUniformLocation(m_program, "Ia")};
+  const GLint IdLoc{abcg::glGetUniformLocation(m_program, "Id")};
+  const GLint IsLoc{abcg::glGetUniformLocation(m_program, "Is")};
+  const GLint KaLoc{abcg::glGetUniformLocation(m_program, "Ka")};
+  const GLint KdLoc{abcg::glGetUniformLocation(m_program, "Kd")};
+  const GLint KsLoc{abcg::glGetUniformLocation(m_program, "Ks")};
+  //const GLint colorLoc{abcg::glGetUniformLocation(m_program, "color")};
+
+  // Set uniform variables used by every scene object
+  abcg::glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE, &m_camera.m_viewMatrix[0][0]);
+  abcg::glUniformMatrix4fv(projMatrixLoc, 1, GL_FALSE, &m_camera.m_projMatrix[0][0]);
+  //abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &m_modelMatrix[0][0]);
+  
+  const auto modelViewMatrix{glm::mat3(m_camera.m_viewMatrix * m_modelMatrix)};
+  glm::mat3 normalMatrix{glm::inverseTranspose(modelViewMatrix)};
+  abcg::glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, &normalMatrix[0][0]);
+  const auto lightDirRotated{m_lightDir};
+  abcg::glUniform4fv(lightDirLoc, 1, &lightDirRotated.x);
+  abcg::glUniform1f(shininessLoc, m_shininess);
+  abcg::glUniform4fv(IaLoc, 1, &m_Ia.x);
+  abcg::glUniform4fv(IdLoc, 1, &m_Id.x);
+  abcg::glUniform4fv(IsLoc, 1, &m_Is.x);
+  abcg::glUniform4fv(KaLoc, 1, &m_Ka.x);
+  abcg::glUniform4fv(KdLoc, 1, &m_Kd.x);
+  abcg::glUniform4fv(KsLoc, 1, &m_Ks.x);
+
 
   // Set uniform variables for viewMatrix and projMatrix
   // These matrices are used for every scene object
-  abcg::glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE,
-                           &m_camera.m_viewMatrix[0][0]);
-  abcg::glUniformMatrix4fv(projMatrixLoc, 1, GL_FALSE,
-                           &m_camera.m_projMatrix[0][0]);
+  //abcg::glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE,
+  //                         &m_camera.m_viewMatrix[0][0]);
+  //abcg::glUniformMatrix4fv(projMatrixLoc, 1, GL_FALSE,
+  //                         &m_camera.m_projMatrix[0][0]);
 
   abcg::glBindVertexArray(m_VAO);
+
 
   // Draw Blue Cube
   glm::mat4 model{1.0f};
@@ -223,7 +254,7 @@ void OpenGLWindow::paintGL() {
   model = glm::scale(model, glm::vec3(0.4f+0.5f*(0.4f-v_box_size) , v_box_size, 0.4f+0.5f*(0.4f-v_box_size)));
 
   abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &model[0][0]);
-  abcg::glUniform4f(colorLoc, random_color[0]-0.5f, random_color[1]-0.5f, random_color[2]-0.5f, 1.0f);
+  //abcg::glUniform4f(colorLoc, random_color[0]-0.5f, random_color[1]-0.5f, random_color[2]-0.5f, 1.0f);
   abcg::glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT,
                        nullptr);
   
@@ -234,7 +265,7 @@ void OpenGLWindow::paintGL() {
   model = glm::scale(model, glm::vec3(0.3f , 0.3f, 0.3f));
 
   abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &model[0][0]);
-  abcg::glUniform4f(colorLoc, box_color[0], box_color[1], box_color[2], 1.0f);
+  //abcg::glUniform4f(colorLoc, box_color[0], box_color[1], box_color[2], 1.0f);
   abcg::glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT,
                        nullptr);
 
@@ -242,6 +273,7 @@ void OpenGLWindow::paintGL() {
   abcg::glBindVertexArray(0);
 
   // Draw ground
+  // definir propriedades do material aqui tbm!
   m_ground.paintGL();
 
   abcg::glUseProgram(0);
@@ -307,26 +339,6 @@ void OpenGLWindow::update() {
       vertical_speed *= -1;
       v_box_hight = 0.0f;
       max_height = max_height - (max_height * 0.1f);
-      
-
-      if (box_color == random_color)
-      {
-        jumpCount += 1;
-      } else {
-        gameState = 1;
-      }
-
-      is_flying = false;
-    }
-    if (v_box_hight > max_height){
-      vertical_speed *= -1;
-      v_box_hight = max_height;
-    }
-    v_box_hight += vertical_speed*deltaTime;
-  } else {
-    if(v_box_size < 0.2f){
-      size_rate *= -1;
-      v_box_size = 0.2f;
       /* ******* ESCOLHER AQUI NOVA COR ENTRE [c_green,c_red, c_blue]********* */
       m_randomEngine.seed(std::chrono::steady_clock::now().time_since_epoch().count());
 
@@ -346,15 +358,42 @@ void OpenGLWindow::update() {
         random_color = c_blue;
       }
 
+      //random_color = c_green;
+
+      is_flying = false;
+    }
+    if (v_box_hight > max_height){
+      vertical_speed *= -1;
+      v_box_hight = max_height;
+    }
+    v_box_hight += vertical_speed*deltaTime;
+  } else {
+    if(v_box_size < 0.2f){
+      size_rate *= -1;
+      v_box_size = 0.2f;
     }
     if (v_box_size > 0.4f){
       size_rate *= -1;
       v_box_size = 0.4f;
       is_flying = true;
 
-      // logica do win state
-      if (jumpCount == 14){
+      // logica simples para testar telas de gameover e win
+      // inserir aqui futuramente criterios para definir win e game over states
+      jumpCount += 1;
+
+      if (jumpCount == 10){
+
+        gameState = 1;
+
+      }
+      else if (jumpCount == 20){
+
         gameState = 2;
+      }
+      else if(jumpCount >= 30){
+
+        gameState = 0;
+        jumpCount = 0;
       }
     }
     v_box_size += size_rate*deltaTime;
